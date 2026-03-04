@@ -1,0 +1,18 @@
+site_name: Proyecto Podcastify
+use_directory_urls: false
+
+theme:
+  name: material
+nav:
+  - Inicio: index.md
+  - Requisitos: spec.md
+  - Arquitectura: architecture.md
+
+plugins:
+  - search
+
+markdown_extensions:
+  - pymdownx.snippets:
+      check_paths: true
+      base_path:
+        - .
