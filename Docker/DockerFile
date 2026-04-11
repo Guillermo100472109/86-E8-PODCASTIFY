@@ -1,0 +1,21 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Instalamos dependencias del sistema necesarias para algunas librerías de Python
+RUN apt-get update && apt-get install -y build-essential && rm -rf /var/lib/apt/lists/*
+
+COPY src/dependencias.txt .
+RUN pip install --no-cache-dir -r dependencias.txt
+
+COPY src/ ./src/
+RUN mkdir -p /app/data
+
+# EXPONEMOS el puerto para el navegador
+EXPOSE 8501
+
+# Comando para ejecutar Streamlit 
+CMD ["streamlit", "run", "src/API/main.py", "--server.port=8501", "--server.address=0.0.0.0"]

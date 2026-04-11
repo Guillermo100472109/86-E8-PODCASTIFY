@@ -1,0 +1,6 @@
+Para buildear la imagen hacer.
+
+    docker build -t monitor-noticias . 
+
+Para runear la imagen 
+    docker run -p 8501:8501 -v "$(pwd)/data:/app/data" monitor-noticias
